@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { fetchAPI, startAPI } from '../services/API';
 import ColectionsItem from '../ColectionsItem/ColectionsItem';
+import shortid from 'shortid';
 
 class Collection extends Component {
   state = {
@@ -56,7 +57,9 @@ class Collection extends Component {
         <p>Collections</p>
         <ul>
           {info.map(el => (
-            <ColectionsItem {...el} />
+            <li key={shortid.generate()}>
+              <ColectionsItem {...el} />
+            </li>
           ))}
         </ul>
       </>

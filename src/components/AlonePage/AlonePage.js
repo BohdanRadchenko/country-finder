@@ -2,10 +2,8 @@
 import React, { Component } from 'react';
 import { fetchAPI } from '../services/API';
 
-class AlonePage extends Component {
-  state = {
-    country: [],
-  };
+export default class AlonePage extends Component {
+  state = { country: [] };
 
   componentDidMount() {
     fetchAPI(this.props.match.params.name).then(response =>
@@ -21,27 +19,21 @@ class AlonePage extends Component {
 
   render() {
     const { country } = this.state;
-    console.log(country);
     return (
       <div>
         {country.map(el => (
-          <li key={`${el.name}+${el.flag}`}>
-            <img
-              src={el.flag}
-              style={{ width: 300, heigth: 300, border: '1px solid gray' }}
-            />
+          <div>
+            <img src={el.flag} alt="" style={{ width: 300, height: 300 }} />
             <p>{el.alpha2Code}</p>
-            <p>{el.alpha3Code}</p>
-            <p>{el.name}</p>
-            <p>{el.nativeName}</p>
-            <p>{el.capital}</p>
-            <p>{el.population}</p>
-            <p>{el.languages[0]}</p>
-            <p>{el.area}</p>
-            <p>{el.region}</p>
-            <p>{el.subregion}</p>
-            <p>{el.timezones[0]}</p>
-          </li>
+            <p>Name:{el.name}</p>
+            <p>Native Name:{el.nativeName}</p>
+            <p>Capital: {el.capital}</p>
+            <p>Population: {el.population}</p>
+            <p>Area:{el.area}</p>
+            <p>Region: {el.region}</p>
+            <p>Subregion: {el.subregion}</p>
+            <p>Time zones: {el.timezones[0]}</p>
+          </div>
         ))}
         <button type="button" onClick={this.handleBack}>
           back
@@ -50,5 +42,3 @@ class AlonePage extends Component {
     );
   }
 }
-
-export default AlonePage;
