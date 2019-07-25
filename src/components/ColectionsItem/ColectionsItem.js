@@ -14,9 +14,12 @@ class ColectionsItem extends Component {
     const { name, match, flag, url } = this.props;
     return (
       <li key={name} style={{ display: 'flax' }}>
-        <img src={flag} alt={name} style={{ width: 100, height: 100 }} />
-        <Link to={`${match.path}/${name}`}>{name}</Link>
-        {/* <Link to={`/collections/${name}`}>{name}</Link> */}
+        {/* <img src={flag} alt={name} style={{ width: 100, height: 100 }} /> */}
+        {/* <Link to={`${match.path}/${name}`}>{name}</Link> */}
+        <Link to={`/collections/${name}`}>
+          <img src={flag} alt={name} style={{ width: 100, height: 100 }} />
+          <p>{name}</p>
+        </Link>
       </li>
     );
   }
